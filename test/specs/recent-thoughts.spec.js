@@ -38,6 +38,15 @@
         expect(articles.length).to.equal(0);
       });
 
+      it('should not create an article if it doesn\'t have all three parts of the object', function() {
+        let result = window.thoughter.showRecent([
+          {content:'THIS IS HARD'}
+        ]);
+        let articles = document.querySelectorAll('main article');
+
+        expect(articles.length).to.equal(0);
+      });
+
     });
 
     // describe('getRecent function', function() {
