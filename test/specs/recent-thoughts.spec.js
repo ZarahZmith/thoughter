@@ -47,7 +47,7 @@
         expect(articles.length).to.equal(0);
       });
 
-      it('should confirm the panel class exists within the article', function() {
+      it('should confirm appropriate elements exist within the article', function() {
         let result = window.thoughter.showRecent([
           {content:'THIS IS HARD', createTime: '8:30', id: '7397258738'}
         ]);
@@ -55,8 +55,9 @@
 
         expect(articles[0].classList.contains('panel')).to.be.true;
         expect(articles[0].classList.contains('panel-info')).to.be.true;
-      });
+        expect(articles[0].getAttribute('id')).to.equal('thought-7397258738');
 
+      });
     });
 
     // describe('getRecent function', function() {
