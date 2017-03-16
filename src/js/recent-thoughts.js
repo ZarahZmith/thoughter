@@ -14,7 +14,7 @@
             return;
         }
 
-        recent = document.querySelector('.recent');
+        let recent = document.querySelector('.recent');
         thoughts.forEach(function showThought(thought) {
             if (!thought.content || !thought.createTime || !thought.id) {
                 return;
