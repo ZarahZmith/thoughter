@@ -24,11 +24,18 @@
 
       it('should run the function', function() {
         let result = window.thoughter.showRecent([
-          {content:'THIS IS HARD', createTime: 'lkjhgfd', id: '7397258738'}
+          {content:'THIS IS HARD', createTime: '8:30', id: '7397258738'}
         ]);
         let articles = document.querySelectorAll('main article');
 
         expect(articles.length).to.equal(1);
+      });
+
+      it('should handle an empty array', function() {
+        let result = window.thoughter.showRecent([]);
+        let articles = document.querySelectorAll('main article');
+
+        expect(articles.length).to.equal(0);
       });
 
     });
