@@ -53,12 +53,17 @@
         let result = window.thoughter.showRecent([
           {content:'THIS IS HARD', createTime: '8:30', id: '7397258738'}
         ]);
-        let articles = document.querySelectorAll('main article');
+        let article = document.querySelectorAll('main article')[0];
 
-        expect(articles[0].classList.contains('panel')).to.be.true;
-        expect(articles[0].classList.contains('panel-info')).to.be.true;
-        expect(articles[0].getAttribute('id')).to.equal('thought-7397258738');
-
+        expect(article.classList.contains('panel')).to.be.true;
+        expect(article.classList.contains('panel-info')).to.be.true;
+        expect(article.getAttribute('id')).to.equal('thought-7397258738');
+        let header = article.querySelectorAll('header.panel-heading');
+        expect(header.length).to.equal(1);
+        // test for content of the header
+        let paragraph = article.querySelectorAll('main.panel-body p');
+        expect(paragraph.length).to.equal(1);
+        expect(paragraph[0].innerText).to.equal('THIS IS HARD');
       });
     });
 
