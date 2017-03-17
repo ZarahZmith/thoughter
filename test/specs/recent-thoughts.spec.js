@@ -14,7 +14,9 @@
       });
 
       afterEach(function() {
-        let main = document.querySelector('main');
+        //selects the specific one we want to remove
+        let main = document.querySelector('main.recent');
+        //go to main, go up to parent, remove child (in this case itself)
         main.parentNode.removeChild(main);
       });
 
@@ -22,32 +24,32 @@
         expect( window.thoughter.showRecent ).to.be.a.function;
       });
 
-      it('should run the function', function() {
-        let result = window.thoughter.showRecent([
+      it('should create articles for every thought it is given', function() {
+        window.thoughter.showRecent([
           {content:'THIS IS HARD', createTime: '8:30', id: '7397258738'}
         ]);
-        let articles = document.querySelectorAll('main article');
+        let articles = document.querySelectorAll('main.recent article');
 
         expect(articles.length).to.equal(1);
       });
 
-      it('should handle an empty array', function() {
+      it('should handle an empty array by creating no articles', function() {
         let result = window.thoughter.showRecent([]);
-        let articles = document.querySelectorAll('main article');
+        let articles = document.querySelectorAll('main.recent article');
 
         expect(articles.length).to.equal(0);
       });
 
-      it('should not create an article if it doesn\'t have all three parts of the object', function() {
+      it('should not create an article if it doesn\'t have all three parts of the object that makes up a thought', function() {
         let result = window.thoughter.showRecent([
           {content:'THIS IS HARD'}
         ]);
-        let articles = document.querySelectorAll('main article');
+        let articles = document.querySelectorAll('main.recent article');
 
         expect(articles.length).to.equal(0);
       });
 
-      it('should confirm appropriate elements exist within the article', function() {
+      it('should confirm appropriate elements exist within the article if it is created', function() {
         let result = window.thoughter.showRecent([
           {content:'THIS IS HARD', createTime: '8:30', id: '7397258738'}
         ]);
