@@ -14,7 +14,7 @@
             return;
         }
 
-        recent = document.querySelector('.recent');
+        let recent = document.querySelector('.recent');
         thoughts.forEach(function showThought(thought) {
             if (!thought.content || !thought.createTime || !thought.id) {
                 return;
@@ -24,6 +24,7 @@
             thoughtUI.classList.add('panel');
             thoughtUI.classList.add('panel-info');
             thoughtUI.setAttribute('id', 'thought-' + thought.id);
+            //finish testing from here down
             thoughtUI.innerHTML = `<header class='panel-heading'>Posted ${thoughts.createTime}</header>
                 <main class='panel-body'>
                     <p>${thought.content}</p>

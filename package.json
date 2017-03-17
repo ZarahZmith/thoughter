@@ -1,0 +1,28 @@
+{
+  "name": "dom_and_ajax_testing",
+  "version": "1.0.0",
+  "description": "Testing to account for DOM manipulation and Ajax calls.",
+  "main": "recent-thoughts.js",
+  "scripts": {
+    "test": "karma start recent-thoughts.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZarahZmith/thoughter.git"
+  },
+  "author": "Sarah Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZarahZmith/thoughter/issues"
+  },
+  "homepage": "https://github.com/ZarahZmith/thoughter#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "karma": "^1.5.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^3.2.0",
+    "sinon": "^2.0.0"
+  }
+}
