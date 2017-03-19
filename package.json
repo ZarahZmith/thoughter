@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ZarahZmith/thoughter#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "fetchmock": "^1.0.1",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
