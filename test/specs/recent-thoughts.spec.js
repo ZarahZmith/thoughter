@@ -67,30 +67,63 @@
       });
     });
 
-    // describe('getRecent function', function() {
-    //
-    //   beforeEach(function() {
-    //     server = sinon.fakeServer.create();
-    //     server.autoRespond = true;
-    //     server.respondWith(
-    //       'GET',
-    //       'http://thoughter.herokuapp.com/api/Thoughts?filter={"order":"createTime DESC","limit":30}',
-    //       [
-    //         200,
-    //         { 'Content-Type': 'appliaction/json'},
-    //         '[ { "name":"Jordan" }, { "name":"Julianne" } ]'
-    //       ]
-    //     );
-    //   });
-    //
-    //   afterEach(function() {
-    //     server.restore();
-    //   });
-    //
-    //   it('should be a function', function() {
-    //     expect( window.thoughter.getRecent ).to.be.a.function;
-    //   });
-    //
-    // });
+    describe('getRecent function', function() {
+
+      beforeEach(function() {
+        fetchMock.mock({
+          method: 'GET',
+          matcher: 'http://thoughter.herokuapp.com/api/Thoughts?filter={"order":"createTime DESC","limit":30}',
+          response: {
+            status: 200,
+            headers: { 'Content-Type': 'appliaction/json'},
+            body: JSON.stringify([
+              { "name":"Jordan" },
+              { "name":"Julianne" }
+            ])
+          }
+        });
+
+        fetchMock.mock({
+          method: 'GET',
+          matcher: '',
+          response: {
+              status: 404,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                "message": "Not Found",
+                "documentation_url": "https://developer.github.com/v3"
+              })
+          }
+        });
+      });
+
+      afterEach(function() {
+        fetchMock.restore();
+      });
+
+      it('should be a function', function() {
+        expect( window.thoughter.getRecent ).to.be.a('function');
+      });
+
+      it('should get back data', function(done) {
+        let promiseReturn = window.thoughter.getRecent(30);
+        expect( promiseReturn.then ).to.be.a('function');
+        expect( promiseReturn.catch ).to.be.a('function');
+
+        promiseReturn
+          .then(function handleData(data) {
+            expect( data ).to.be.an('Array');
+            expect( data.length ).to.equal(2);
+            done();
+          })
+          .catch(function handleError(err) {
+            done(err);
+          });
+      });
+
+      //try to force a failure
+      //try to enter something besides and number
+
+    });
   });
 }());

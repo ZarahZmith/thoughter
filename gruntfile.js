@@ -21,11 +21,19 @@ module.exports = function confGrunt(gruntConf) {
         dest: 'build/js/',
         expand: true
       }
+    },
+
+    sass: {
+      all: {
+        files: {
+          'build/style.css':'src/sass/main.scss'
+        }
+      }
     }
 
   });
 
   require('load-grunt-tasks')(gruntConf);
 
-  gruntConf.registerTask('build', ['clean', 'copy']);
+  gruntConf.registerTask('build', ['clean', 'copy', 'sass']);
 };
