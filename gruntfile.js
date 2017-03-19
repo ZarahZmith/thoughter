@@ -5,9 +5,20 @@ module.exports = function confGrunt(gruntConf) {
 
     copy: {
       html: {
-        cwd: 'src/',
-        src: '*.html',
+        //current working directory
+        cwd: 'src/',  //get into the source
+        //source
+        src: ['*.html'],
+        //destination
         dest: 'build/',
+        //expands all the way back to root directory without needing to maunally do so
+        expand: true
+      },
+
+      js: {
+        cwd: 'src/js/',
+        src: ['*.js'],
+        dest: 'build/js/',
         expand: true
       }
     }
