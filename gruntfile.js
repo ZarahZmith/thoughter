@@ -20,6 +20,17 @@ module.exports = function confGrunt(gruntConf) {
         src: ['*.js'],
         dest: 'build/js/',
         expand: true
+      },
+
+      jQuery: {
+        files: [
+          {
+            cwd: 'src/js',
+            src: ['*.js'],
+            dest: 'build/js/vendor/',
+            expand: true
+          }
+        ]
       }
     },
 
