@@ -15,18 +15,20 @@ module.exports = function confGrunt(gruntConf) {
         expand: true
       },
 
+      //changed this to make it DRY
       js: {
-        cwd: 'src/js/',
-        src: ['*.js'],
-        dest: 'build/js/',
+        cwd: 'src/',
+        src: ['**/*.js'],
+        dest: 'build/',
         expand: true
       },
 
+      //fix!!!!!!
       jQuery: {
         files: [
           {
-            cwd: 'src/js',
-            src: ['*.js'],
+            cwd: 'node_modules/jquery/dist/',
+            src: ['jquery.js'],
             dest: 'build/js/vendor/',
             expand: true
           }
